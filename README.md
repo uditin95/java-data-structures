@@ -1,5 +1,5 @@
 # java-data-structures
 DS:-
-Java classes:
+Custom Java Data Structures classes:-
 
-tree, stack , queue
+linked list, tree, stack , queue
