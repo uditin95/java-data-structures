@@ -1,43 +1,53 @@
-public class Stack
+public class Stack<Item>
 {
-	private int top ;
-	private int arr[];
-	private int size;
-	Stack()
+    private class node<Item>
 	{
-			top = -1;
-			size = 100;
-			arr = new int[size];
-	}
-	public int pop()
-	{
-		if(top>=0)
-		return arr[top--];
+	    Item data;
+		node<Item> next;
+		
+		node(Item data)
+		{
+		    this.data = data;
+			next = null;
+		}
+    }
 	
-		return -6;
-	}
-	public void push(int x)
+	private node<Item> top = null;
+	
+	public Item pop()
 	{
-		if(top<size)
-			arr[++top] = x;
-		else
-			System.out.println("out of limits ");
+		if(isEmpty())
+		{
+		    return null;
+		}
+		
+		node<Item> t = top;
+		
+        top = top.next;
+		
+		return t.data;
+		
+	}
+	public void push(Item x)
+	{
+		if(isEmpty())
+		    top = new node<Item>(x);
+		else{
+		    node<Item> t = new node<Item>(x);
+			
+			t.next = top;
+			top = t;
+		}
+		    
 	}
 	
 	public void seek()
 	{
-		System.out.println(arr[top]);
+		System.out.println(top.data);
 	}
+	
 	public boolean isEmpty()
 	{
-		if(top==-1)
-			return true;
-		return false;
-	}
-	public boolean isFull()
-	{
-		if(top==size)
-			return true;
-		return false;
+		return top == null;
 	}
 }
